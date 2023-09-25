@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -f 2 | sort
+sort -k 2 -r | cut -f 1 > koko | head koko
