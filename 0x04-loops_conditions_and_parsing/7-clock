@@ -12,3 +12,4 @@ while [ $i -lt 12 ]; do
 	done
 	((i++))
 done
+echo "Hour: $i"
