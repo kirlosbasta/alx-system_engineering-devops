@@ -3,7 +3,7 @@
 
 i=0
 j=0
-while [ $i -lt 12 ]; do
+while [ $i -lt 13 ]; do
 	j=0
 	echo "Hour: $i"
 	while [ $j -lt 59 ]; do
@@ -12,4 +12,3 @@ while [ $i -lt 12 ]; do
 	done
 	((i++))
 done
-echo "Hour: $i"
