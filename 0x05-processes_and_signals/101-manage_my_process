@@ -6,11 +6,11 @@ if [ "$1" == "start" ]; then
 	echo "$!" | sudo tee /var/run/my_process.pid
 	echo "manage_my_process started"
 elif [ "$1" == "stop" ]; then
-	kill ./manage_my_process
+	kill $(cat /var/run/my_process.pid)
 	rm /var/run/my_process.pid
 	echo "manage_my_process stopped"
 elif [ "$1" == "restart" ]; then
-	kill ./manage_my_process
+	kill $(cat /var/run/my_process.pid)
 	rm /var/run/my_process.pid
 	./manage_my_process &
 	touch /var/run/my_process.pid
