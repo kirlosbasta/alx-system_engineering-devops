@@ -34,14 +34,14 @@ int main(void)
 
 /**
  * infinite_while - create an infinite while loop
- * 
+ *
  * Return: Always 0
  */
 int infinite_while(void)
 {
-    while (1)
-    {
-        sleep(1);
-    }
-    return (0);
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
 }
