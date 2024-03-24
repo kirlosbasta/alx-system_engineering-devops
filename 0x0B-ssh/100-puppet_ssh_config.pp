@@ -5,13 +5,13 @@ $config = 'Host *
     BatchMode yes'
 
 file_line { 'Identity File':
-    path    => '~/.ssh/config',
+    path    => '/etc/ssh/ssh_config',
     ensure  => present,
     line    => 'IdentityFile ~/.ssh/school',
 }
 
 file_line { 'Password Authentication':
-    path    => '~/.ssh/config',
+    path    => '/etc/ssh/ssh_config',
     ensure  => present,
     line    => 'PasswordAuthentication no',
 }
