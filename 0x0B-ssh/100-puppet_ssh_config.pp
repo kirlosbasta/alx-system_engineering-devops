@@ -3,8 +3,14 @@ $config = 'Host *
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
     BatchMode yes'
-file { 'ssh':
-    path     => '/home/koko/.ssh/config',
-    ensure   => present,
-    content  => $config,
+file_line { 'Identity File':
+    path    => '~/.ssh/config',
+    ensure  => present,
+    line    => 'IdentityFile ~/.ssh/school',
+}
+
+file_line { 'Password Authentication':
+    path    => '~/.ssh/config',
+    ensure  => present,
+    line    => 'PasswordAuthentication no',
 }
