@@ -3,6 +3,7 @@ $config = 'Host *
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
     BatchMode yes'
+
 file_line { 'Identity File':
     path    => '~/.ssh/config',
     ensure  => present,
