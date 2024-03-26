@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# install nginx on the server
+sudo apt-get -y install nginx
+sudo mkdir -p /var/www/helloWorld.com/html
+sudo chown -R $USER:$USER /var/www/helloWorld.com/html
+echo "Hello World!" > /var/www/helloWorld.com/html/index.html
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/helloWorld.com
+sudo sed -i 's/root \/var\/www\/html/root \/var\/www\/helloWorld.com\/html/g' /etc/nginx/sites-available/helloWorld.com
+sudo sed -i 's/default_server//g' /etc/nginx/sites-available/helloWorld.com
+sudo ln -s /etc/nginx/sites-available/helloWorld.com /etc/nginx/sites-enabled/
+sudo service nginx restart
