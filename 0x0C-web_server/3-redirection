@@ -7,7 +7,7 @@ sudo apt-get -y install nginx
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 # redirect page redirect_me to youtube
 FILENGINX="/etc/nginx/sites-available/default"
-STR="rewrite ^/redirect_me$ https://www.youtube.com permanent;"
-sudo sed -i "37i/\\\t\\t$STR" "$FILENGINX"
+STR="\n\tlocation /redirect_me {\n\t\treturn 301 https://youtu.be/dQw4w9WgXcQ; \n\t}\n"
+sed -i "37i\ $REDIRECT" "$FILENGINX"
 # restart to apply the changes
 sudo service nginx restart
