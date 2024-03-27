@@ -19,7 +19,7 @@ SERVER="server {
         }
     }"
 echo "$SERVER" | sudo tee "$FILENGINX" 
-STR="rewrite ^/redirect_me$ https://www.youtube.com permanent;"
+STR="rewrite ^/redirect_me$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
 sudo sed -i "/location \/ {/a \\\t\\t$STR" "$FILENGINX"
 # restart to apply the changes
 sudo service nginx restart
