@@ -19,6 +19,6 @@ SERVER="server {
     }"
 echo "$SERVER" | sudo tee "$FILENGINX"
 # error 404
-echo "Ceci n'est pas une page" > /404.html
+echo "Ceci n'est pas une page" | sudo tee /404.html
 # restart to apply the changes
 sudo service nginx restart
