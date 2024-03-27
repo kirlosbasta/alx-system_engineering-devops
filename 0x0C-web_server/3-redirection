@@ -12,14 +12,12 @@ SERVER="server {
         listen [::]:80 default_server;
         root /var/www/html;
         index index.html index.htm index.nginx-debian.html;
-        server_name _;
-
-        location / {
-            try_files \$uri \$uri/ =404;
+        location /redirect_me {
+            return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
         }
     }"
 echo "$SERVER" | sudo tee "$FILENGINX" 
-STR="rewrite ^/redirect_me$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
-sudo sed -i "/location \/ {/a \\\t\\t$STR" "$FILENGINX"
+# STR="rewrite ^/redirect_me$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+# sudo sed -i "/location \/ {/a \\\t\\t$STR" "$FILENGINX"
 # restart to apply the changes
 sudo service nginx restart
