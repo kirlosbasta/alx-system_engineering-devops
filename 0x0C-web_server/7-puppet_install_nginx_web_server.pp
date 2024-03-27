@@ -10,8 +10,8 @@ file { 'html':
 }
 
 file { 'redirect':
-    path    => '/etc/nginx/sites-available/default',
     ensure  => present,
+    path    => '/etc/nginx/sites-available/default',
     content => 'server {
         listen 80 default_server;
         listen [::]:80 default_server;
