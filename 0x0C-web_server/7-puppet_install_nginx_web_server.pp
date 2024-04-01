@@ -1,6 +1,6 @@
 #  install and configure an Nginx server
 package { 'nginx':
-    ensure   => install,
+    ensure   => installed,
 }
 
 file { 'html':
@@ -9,20 +9,12 @@ file { 'html':
     content => 'Hello World!',
 }
 
-file { 'redirect':
-    ensure  => present,
-    path    => '/etc/nginx/sites-available/default',
-    content => 'server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-        location /redirect_me {
-            return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-        }
-    }'
+file_line {'configure redirection':
+    path  =>  '/etc/nginx/sites-available/default',
+    after =>  'server_name _;',
+    line  =>  "\n\tlocation /redirect_me {\n\t\treturn 301 https://youtu.be/dQw4w9WgXcQ;\n\t}\n"
 }
 
-exec { 'restart':
-    command  => 'sudo service nginx restart',
+service {'nginx':
+    ensure => running,
 }
