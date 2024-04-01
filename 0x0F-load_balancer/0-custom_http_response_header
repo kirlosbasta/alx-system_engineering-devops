@@ -14,7 +14,7 @@ sudo sed -i "/server_name _;/a $STR" "$FILENGINX"
 # error 404
 sudo sed -i "/server_name _;/a error_page 404 /404.html;" "$FILENGINX"
 # Custom header
-sudo sed -i "/server_name _;/a add_header X-Served-By $(hostname)" "$FILENGINX"
+sudo sed -i "/server_name _;/a add_header X-Served-By $HOSTNAME;" "$FILENGINX"
 echo "Ceci n'est pas une page" | sudo tee /404.html
 # restart to apply the changes
 sudo service nginx restart
