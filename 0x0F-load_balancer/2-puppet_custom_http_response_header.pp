@@ -1,8 +1,7 @@
 #  install and configure an Nginx server
 exec { 'apt_update':
-    command => '/usr/bin/apt-get update',
+    command => '/usr/bin/apt-get -y update',
     path    => ['/usr/bin', '/bin', '/usr/sbin', '/sbin'],
-    require => Exec['apt_upgrade'],
 }
 
 package { 'nginx':
