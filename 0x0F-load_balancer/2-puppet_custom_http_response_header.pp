@@ -27,9 +27,10 @@ file_line { 'configure redirection':
 }
 
 file_line { 'http_header':
-    path  => '/etc/nginx/sites-available/default',
-    after => 'server_name _;',
-    line  => "add_header X-Served-By ${hostname};",
+    ensure => present,
+    path   => '/etc/nginx/sites-available/default',
+    after  => 'server_name _;',
+    line   => "add_header X-Served-By ${hostname};",
 }
 
 service { 'nginx':
