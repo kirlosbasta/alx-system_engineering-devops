@@ -23,4 +23,5 @@ file_line { 'http_header':
 
 service { 'nginx':
     ensure => running,
+    restart,
 }
