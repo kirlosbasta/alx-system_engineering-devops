@@ -23,5 +23,12 @@ file_line { 'http_header':
 
 service { 'nginx':
     ensure => running,
-    restart,
+    enable => true,
+    notify => Exec['restart_nginx'],
+}
+
+exec { 'restart_nginx':
+ command => '/usr/sbin/service nginx restart',
+ path    => ['/usr/sbin', '/usr/bin', '/sbin', '/bin'],
+ refreshonly => true,
 }
