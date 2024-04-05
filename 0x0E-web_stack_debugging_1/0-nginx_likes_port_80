@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script that configures a server listening on port 80 of all the server’s active IPv4 IPs
+sudo sed  -i '0,/listen/s/.*listen.*/\tlisten 80 default_server;/' /etc/nginx/sites-enabled/default
+sudo service nginx restart
