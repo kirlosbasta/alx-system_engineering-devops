@@ -22,9 +22,10 @@ def main():
         if todo_json[i]['completed']:
             number_of_done_tasks += 1
     with open(csv_file, 'w', encoding='utf8') as f:
-        for i in len(todo_json):
-            f.write(f'{id},{user_name},{todo_json[i]['completed']},{\
-                todo_json[i]['title']}')
+        for i in range(len(todo_json)):
+            f.write('"{}","{}","{}","{}"\n'.format(
+                id, user_name,todo_json[i]['completed'],
+                todo_json[i]['title']))
 
 
 if __name__ == '__main__':
