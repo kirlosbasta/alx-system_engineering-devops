@@ -24,7 +24,7 @@ def main():
     with open(csv_file, 'w', encoding='utf8') as f:
         for i in range(len(todo_json)):
             f.write('"{}","{}","{}","{}"\n'.format(
-                id, user_name,todo_json[i]['completed'],
+                id, user_name, todo_json[i]['completed'],
                 todo_json[i]['title']))
 
 
