@@ -5,6 +5,7 @@ import json
 import requests
 import sys
 
+
 def main():
     '''Entry point to the module'''
     todo_url = 'https://jsonplaceholder.typicode.com/todos/'
