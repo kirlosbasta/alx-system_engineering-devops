@@ -10,6 +10,7 @@ def main():
     todo_url = 'https://jsonplaceholder.typicode.com/todos/'
     user_url = 'https://jsonplaceholder.typicode.com/users/'
     id = sys.argv[1]
+    csv_file = f'{id}.csv'
     todo_responce = requests.get(todo_url, params={'userId': id})
     user_responce = requests.get(user_url + id)
     user_json = json.loads(user_responce.text)
@@ -20,12 +21,10 @@ def main():
     for i in range(total_number_of_tasks):
         if todo_json[i]['completed']:
             number_of_done_tasks += 1
-    print('Employee {} is done with tasks({}/{}):'.format(
-        user_name, number_of_done_tasks, total_number_of_tasks
-        ))
-    for i in range(total_number_of_tasks):
-        if todo_json[i]['completed']:
-            print('\t ' + todo_json[i]['title'])
+    with open(csv_file, 'w', encoding='utf8') as f:
+        for i in len(todo_json):
+            f.write(f'{id},{user_name},{todo_json[i]['completed']},{\
+                todo_json[i]['title']}')
 
 
 if __name__ == '__main__':
