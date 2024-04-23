@@ -15,7 +15,7 @@ def main():
     user_responce = requests.get(user_url + id)
     user_json = json.loads(user_responce.text)
     todo_json = json.loads(todo_responce.text)
-    user_name = user_json["name"]
+    username = user_json["username"]
     total_number_of_tasks = len(todo_json)
     number_of_done_tasks = 0
     for i in range(total_number_of_tasks):
@@ -24,7 +24,7 @@ def main():
     with open(csv_file, 'w', encoding='utf8') as f:
         for i in range(len(todo_json)):
             f.write('"{}","{}","{}","{}"\n'.format(
-                id, user_name, todo_json[i]['completed'],
+                id, username, todo_json[i]['completed'],
                 todo_json[i]['title']))
 
 
