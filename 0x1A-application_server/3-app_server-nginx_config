@@ -16,6 +16,11 @@ server {
         proxy_pass http://0.0.0.0:5000;
     }
 
+    location ~ /airbnb-dynamic/number_odd_or_even/\d+ {
+        rewrite ^/airbnb-dynamic/number_odd_or_even/(\d+)$ /number_odd_or_even/$1 break;
+        proxy_pass http://0.0.0.0:5001;
+    }
+
     add_header X-Served-By 517440-web-01;
     error_page 404 /404.html;
     location /redirect_me {
