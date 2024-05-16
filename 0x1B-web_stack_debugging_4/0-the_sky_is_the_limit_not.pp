@@ -4,7 +4,9 @@ exec {'increase soft limit':
     command => "/bin/sed -i 's/15/4096/g' /etc/default/nginx"
 }
 
-exec {'restart nginx':
-    require => Exec['increase soft limit'],
-    command => '/usr/sbin/service nginx restart'
+service {'nginx restart':
+    ensure    => running,
+    name      => 'nginx',
+    enable    => true,
+    subscribe => Exec['increase soft limit'],
 }
