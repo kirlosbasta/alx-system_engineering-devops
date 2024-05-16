@@ -5,5 +5,6 @@ exec {'increase soft limit':
 }
 
 exec {'restart nginx':
-    command  => '/usr/sbin/service nginx restart'
+    require => Exec['increase soft limit'],
+    command => '/usr/sbin/service nginx restart'
 }
